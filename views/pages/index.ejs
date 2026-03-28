@@ -3,16 +3,20 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<body class="container">
+<body>
     <header>
         <%- include('../partials/header'); %>
     </header>
     <main>
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS</p>
-        </div>
-
+       <form action="/about"method="POST">
+        <label for="fname">First Name</label><br/>
+        <input type="text" id="fname" name="fname"/><br/><br/>
+        <label for="lname">Last Name</label><br/>
+        <input type="text" id="lname" name="lname"/><br/><br/>
+        <label for="email">Email</label><br/>
+        <input type="text" id="email" name="email"/><br/><br/>
+        <input type="submit" value="Submit" />
+       </form>
     </main>
     <footer>
         <%- include('../partials/footer'); %>
