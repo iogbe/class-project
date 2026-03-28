@@ -14,14 +14,14 @@ app.get("/", (req, res) => {
 
 });
 
+app.get("/about", (req, res) => {
+    res.render("pages/about");
+});
+
 app.get("/form", (req, res) => {
-    res.send("<h1>Form Page</h1>");
+    res.render("pages/form");
 });
 
-app.get("/class1", (req, res) => {
-    res.send("<h1>Class 1 Page</h1>");
-});
-
-app.get("/class2", (req, res) => {
-    res.send("<h1>Class 2 Page</h1>");
+app.get("/class", (req, res) => {
+    res.render("pages/class");
 });
