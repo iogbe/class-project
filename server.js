@@ -18,10 +18,14 @@ app.get("/about", (req, res) => {
     res.render("pages/about");
 });
 
-app.get("/form", (req, res) => {
-    res.render("pages/form");
-});
-
-app.get("/class", (req, res) => {
+app.route("/class")
+    .get((req, res) => {
     res.render("pages/class");
+    })
+    .post((req, res) => {
+        res.render("pages/class");
+    });
+
+app.use((req, res) => {
+    res.status(404).render("pages/404");
 });
