@@ -1,4 +1,5 @@
 import express from "express";
+import type { Request, Response } from "express";
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -9,23 +10,23 @@ app.listen(port, () => {
     console.log("Server started on port 8080");
 });
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.render("pages/index");
 
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", (req: Request, res: Response) => {
     res.render("pages/about");
 });
 
 app.route("/class")
-    .get((req, res) => {
+    .get((req: Request, res: Response) => {
     res.render("pages/class");
     })
-    .post((req, res) => {
+    .post((req: Request, res: Response) => {
         res.render("pages/class");
     });
 
-app.use((req, res) => {
+app.use((req: Request, res: Response) => {
     res.status(404).render("pages/404");
 });
