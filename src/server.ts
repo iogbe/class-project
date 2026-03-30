@@ -19,6 +19,7 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 
 
 app.listen(port, () => {
@@ -34,22 +35,37 @@ app.get("/about", (req: Request, res: Response) => {
     res.render("pages/about");
 });
 
-app.route("/class")
-    .get( async (req: Request, res: Response) => {
+app.post("/api", async (req: Request, res: Response) => {
+        const client = await pool.connect();
+        try {
+            const { fname, lname, email, class_type } = req.body;
+            console.log(`Received data: ${fname}, ${lname}, ${email}, ${class_type}`);
+            const query = `
+            INSERT INTO students (first_name, last_name, email, class_type)
+            VALUES ($1, $2, $3, $4)`;
+            await client.query(query, [fname, lname, email, class_type]);
+            res.redirect("/class");
+        }
+        catch (err) {
+            console.error(err);
+            res.status(500).send("Error inserting data into database");
+        }
+        finally {
+            client.release();
+        }
+    });
+app.get("/class", async (req: Request, res: Response) => {
         const client = await pool.connect();
         try {
             const result = await client.query("SELECT first_name, last_name, email, class_type FROM students");
-            console.log(result.rows);
             res.render("pages/class", { students: result.rows });
         } catch (err) {
             console.error(err);
         } finally {
             client.release();
         }
-    })
-    .post((req: Request, res: Response) => {
-        res.render("pages/class");
     });
+
 
 app.use((req: Request, res: Response) => {
     res.status(404).render("pages/404");

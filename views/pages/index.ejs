@@ -8,20 +8,19 @@
         <%- include('../partials/header'); %>
     </header>
     <main>
-       <form action="/class" method="POST">
+       <form action="/api" method="POST">
         <label for="fname">First Name</label><br/>
         <input type="text" id="fname" name="fname"/><br/><br/>
         <label for="lname">Last Name</label><br/>
         <input type="text" id="lname" name="lname"/><br/><br/>
         <label for="email">Email</label><br/>
         <input type="text" id="email" name="email"/><br/><br/>
-        <label for="classes">Class</label><br/>
-        <select id="classes" name="classes">
-            <option value="arms">Arm Day</option>
-            <option value="legs">Leg Day</option>
+        <label for="class_type">Class</label><br/>
+        <select id="classes_type" name="class_type">
+            <option value="arm">Arm Day</option>
+            <option value="leg">Leg Day</option>
             <option value="push">Push Day</option>
             <option value="pull">Pull Day</option>
-            <option value="running">Running</option>
         </select><br/><br/>
         <input type="submit" value="Submit" />
        </form>
