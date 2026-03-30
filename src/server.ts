@@ -7,14 +7,10 @@ import { Pool } from "pg";
 const app = express();
 const port = process.env.PORT || 8080;
 
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
-    host: PGHOST,
-    database: PGDATABASE,
-    user: PGUSER,
-    password: PGPASSWORD,
-    port: 5432,
+    connectionString: connectionString,
     ssl: {
         rejectUnauthorized: false,
     },
