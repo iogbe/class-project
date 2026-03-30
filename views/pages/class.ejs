@@ -12,46 +12,6 @@
         <h2>Arm Day</h2>
         <h2>Coach Tim Blake</h2>
         <p>Fridays at 6 pm</p>
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Class</th>
-            </tr>
-            <% students.forEach(student => { %>
-                <tr>
-                    <% if (student.class_type === 'arm') { %>
-                    <td><%= student.first_name %></td>
-                    <td><%= student.last_name %></td>
-                    <td><%= student.email %></td>
-                    <td><%= student.class_type %></td>
-                    <% } %>
-                </tr>
-            <% }); %>
-        </table>
-
-        <h2>Leg Day</h2>
-        <h2>Coach Jennifer Frost</h2>
-        <p>Saturdays at 6 pm</p>
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Class</th>
-            </tr>
-            <% students.forEach(student => { %>
-                    <tr>
-                        <% if (student.class_type === 'leg') { %>
-                        <td><%= student.first_name %></td>
-                        <td><%= student.last_name %></td>
-                        <td><%= student.email %></td>
-                        <td><%= student.class_type %></td>
-                        <% } %>
-                    </tr>
-                <% }); %>
-        </table>
     </main>
     <footer>
         <%- include('../partials/footer'); %>
